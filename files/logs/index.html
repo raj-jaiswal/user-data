@@ -1,0 +1,36 @@
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body>
+  <script>
+  getData().catch(err=>{console.error(err)});
+  async function getData(){
+    const response=await fetch('/data');
+    const data=await response.json();
+    
+    for(item of data){
+      var div=document.createElement('div');
+      var latLon=document.createElement('div');
+      var timestamp=document.createElement('div');
+      var name=document.createElement('div');
+      var image=document.createElement('img');
+      
+      latLon.textContent="latitude:"+item.latitude+"  "+"longitude:"+item.longitude;
+      const stringDate=new Date(item.timestamp).toLocaleString();
+      timestamp.textContent=stringDate;
+      name=item.name;
+      image.src=item.image64;
+      image.style.height='300px';
+      image.style.width='300px';
+      image.style.display='block';
+      div.style.backgroundColor='lightgrey';
+      div.style.margin='2px';
+      div.style.padding='10px';
+
+      div.append(name,latLon,timestamp,image);
+      document.body.append(div);
+      document.body.innerHTML+='<br>';
+    }
+  }
+  </script>
+</body>
