@@ -16,6 +16,7 @@
     "url": "git://github.com/username/repository.git"
   },
   "dependencies": {
+    "dotnet": "^1.1.4",
     "express": "^4.17.1",
     "nedb": "^1.8.0",
     "nodemon": "^2.0.7"

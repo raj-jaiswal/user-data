@@ -1,10 +1,11 @@
 const express= require('express');
 const db= require('nedb');
+require('dotnet').config();
 const app=express();
 const database=new db('data.db');
 database.loadDatabase();
 
-app.listen(3000, ()=> console.log('listening'));
+app.listen(process.env.PORT || 3000, ()=> console.log('listening...'));
 app.use(express.static('files'));
 app.use(express.json({limit:'3mb'}));
 
